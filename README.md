@@ -1,2 +1,4 @@
 # itstructure
-IT Structure contains network topology, servers connections, extra settings, change log and future modifications.
+IT Structure is a web project created for accounting and managing the network topology, lists of servers and communication equipment, their connections, additional settings, a log of these changes, and plans for the future.
+
+You can configure it in your internal LAN to be used for your personal purposes;
