@@ -15,10 +15,10 @@ api/globals/gsettings/local.py
 api/globals/alembic.ini
 api/web/apps/start.py
 api/conf/*
-api/!conf/*.orig
+!api/conf/*.orig
 api/logs/*
 iface/conf/*
-iface/!conf/*.orig
+!iface/conf/*.orig
 iface/logs/*
 
 

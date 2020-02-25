@@ -1,0 +1,19 @@
+## Unix login/group
+OWNER             = some
+OWNER_GROUP       = projects
+
+## Project root path:
+ROOT              = /projects/itstructure/iface
+
+HTTPD_HOST        = it.somedomain.ru
+HTTPD_USER        = www-data
+HTTPD_GROUP       = www-data
+
+## Setup cookies for this root domain:
+ROOTCOOKIE        = .somedomain.ru
+
+WS_URL            = it.somedomain.ru/ws/
+API_URL           = http://api.somedomain.ru
+PASSPORT_URL      = http://passport.somedomain.ru
+
+

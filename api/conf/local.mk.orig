@@ -1,0 +1,23 @@
+## Unix login/group
+OWNER             = some
+OWNER_GROUP       = projects
+
+## Project root path:
+ROOT              = /projects/itstructure/api
+
+HTTPD_HOST        = api.somedomain.ru
+HTTPD_USER        = www-data
+HTTPD_GROUP       = www-data
+
+## Setup cookies for this root domain:
+ROOTCOOKIE        = .somedomain.ru
+
+DB_MASTER         = api:api@127.0.0.1:5432/api
+DB_SLAVE          = api:api@127.0.0.1:5432/api
+
+BLACKBOX_HOST     = localhost
+BLACKBOX_PORT     = 8890
+REDIS_HOST        = localhost
+REDIS_PORT        = 6379
+
+
