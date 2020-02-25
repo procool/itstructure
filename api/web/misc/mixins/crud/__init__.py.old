@@ -1,0 +1,292 @@
+import logging
+import math
+from flaskcbv.view.mixins import getArgumentMixin
+
+from flask import abort, url_for
+
+from misc.reports import Reports
+from misc.backendclient import backendClient
+from flaskcbv.conf import settings
+from misc.mixins_local.crud import ListViewBaseMixin, DetailsViewMixin
+from update import UpdateViewMixin, DBObjectNotFoundEx
+
+
+class ListViewMixin(ListViewBaseMixin, getArgumentMixin):
+    ## To Override:
+    ## list_name = None
+    ## model = None
+
+    def helper(self):
+        try: r = super(ListViewMixin, self).helper()
+        except: r = ''
+        r += """
+List Helper:
+============
+
+You can save page number, number of records on page, sort direction, 
+searched fields and other settings of current list in session cookie 
+by using this engine;
+All this settings will be applyed for list with it name;
+Every list has a name, for e.g. list of orders named: `orders';
+
+But! You can set custom name for this list by 
+query argument: `list_name';
+
+It can be useful, if you have several similar lists on one page;
+For example several lists of orders; 
+By default, each list will have the name "orders", so if you 
+set the page number(or search filter) on the same list, 
+the same settings will apply to the second;
+To avoid this conflict it is necessary to use different names for 
+the same lists;
+
+Avalible query arguments:
+    list_name: custom name of list;
+    
+        """
+
+        return r
+
+
+    def get_list_name(self):
+        if self.__list_name is not None:
+            return self.__list_name
+        return self.list_name
+
+
+    def prepare(self, *args, **kwargs):
+        try: 
+            if not isinstance(self.session['lists'], dict):
+                raise Exception("not a list")
+        except:
+            self.session['lists'] = dict()
+
+        ## Setup list_name by GET Args:
+        try: self.__list_name = self.get_argument_smart('list_name')
+        except: 
+            if 'list_name' in self.session and self.session['list_name'] is not None and self.session['list_name'] != '':
+                self.__list_name = self.session['list_name']
+            else:
+                self.__list_name = None
+        self.session['list_name'] = self.get_list_name()
+
+        r = super(ListViewMixin, self).prepare(*args, **kwargs)
+
+        ## Store list settings in session cookie:
+        try: self.set_list_in_session()
+        except: pass
+        return r
+
+
+
+class PageViewMixin(getArgumentMixin):
+    perpage = 10
+    perpage_max = 1000
+
+
+    def helper(self):
+        try: r = super(PageViewMixin, self).helper()
+        except: r = ''
+        r += """
+Page Helper:
+============
+You can set the page number, number of records on page and output type;
+            
+Avalible query arguments:
+    page: page number(default: 1)
+    perpage: number of records on page(default: %(perpage)s)
+    output: type of output format(json, csv, ...)
+
+If page > max. number of pages, engine will show last page to you;
+If perpage > %(perpage_max)s, response will be generated in the form of a report;
+If output != json, response will be generated in the form of a report;
+
+Reports:
+Large responses will be given in the form of reports;
+Report creation takes some time, that is why, when you receive response,
+you will be redirected(302) to a page with the status of the readiness report.
+
+If you don't want to catch 302 in response, you can set `dont_redirect' argument in QS:
+....&dont_redirect=t&
+
+        """ % { 'perpage_max': self.perpage_max, 'perpage': self.perpage, }
+
+        return r
+
+
+    ## Returns request parameters for report building:
+    def get_report_params(self, **kwargs):
+        try: params = super(PageViewMixin, self).get_report_params(**kwargs)
+        except: params = {}
+        params['page'] = self.__page
+        params['perpage'] = self.__perpage
+        params['view'] = self.__class__.__name__
+        return params
+
+    def get_queryset_postfix_last(self, **kwargs):
+        qs = super(PageViewMixin, self).get_queryset_postfix_last(**kwargs)
+        if self.pages_total is None:
+            pages_total_ = math.ceil( float(qs.count())/float(self.__perpage) )
+            self.pages_total = int(pages_total_) or 1
+        if self.__page > self.pages_total:
+            self.__page = self.pages_total
+        qs = qs.limit(self.__perpage)
+        page_ = self.__page - 1
+        if page_ < 0:
+            page_ = 0
+        offset_ = page_*self.__perpage
+        qs = qs.offset(offset_)
+        return qs
+
+    def __get_page_by_session(self, page, perpage):
+        ## Setup Page and PerPage by session:
+        setts = self.get_list_setts()
+        if page is None:
+            try: page = int(setts['page'])
+            except: pass
+
+        if perpage is None:
+            try: perpage = int(setts['perpage'])
+            except: pass
+
+        return page, perpage
+
+
+    def set_list_in_session(self, **kwargs):
+        kwargs['page'] = self.__page
+        kwargs['perpage'] = self.__perpage
+        super(PageViewMixin, self).set_list_in_session(**kwargs)
+
+
+    def get_context_data(self, **kwargs):
+        context = super(PageViewMixin, self).get_context_data(**kwargs)
+        try: 
+            context['page'] = self.__page
+            context['perpage'] = self.__perpage
+            context['pages_total'] = self.pages_total
+        except Exception as err:
+            logging.error("PageViewMixin: can't set get_context_data: %s" % err)
+        return context
+
+    def dispatch(self, request, *args, **kwargs):
+
+        ## Setup Page and PerPage by GET/POST Args:
+        try: page_ = int(self.get_argument_smart('page'))
+        except: page_ = None
+        try: perpage_ = int(self.get_argument_smart('perpage'))
+        except: perpage_ = None
+
+        #try: 
+        #    self._tz = int(self.get_argument_smart('tz'))
+        #except Exception as err: 
+        #    self._tz = 0
+
+
+        self.pages_total = None
+
+        try: 
+            dont_redirect=request.args['dont_redirect']
+            self.dont_redirect = dont_redirect[0].lower() in ('t', 'y', '1') and True or False
+        except: self.dont_redirect=False
+
+        try: self.output=request.args['output']
+        except: self.output='json'
+        if len(self.output)>10:
+            self.output='json'
+
+        try: self.output_as_attach=request.args['output_as_attach']
+        except: self.output_as_attach=False
+
+
+
+        ## Setup Page and PerPage by session:
+        if page_ is None or perpage_ is None:
+            try: page_, perpage_ = self.__get_page_by_session(page_, perpage_)
+            except: pass
+
+        ## Defaults:
+        if perpage_ is None:
+            perpage_ = self.perpage
+        if page_ is None:
+            page_ = 1
+
+        self.__page = page_
+        self.__perpage = perpage_
+
+        if perpage_ > self.perpage_max:
+            return self.report_redirect(request)
+        if self.output != 'json':
+            return self.report_redirect(request)
+
+        return super(PageViewMixin, self).dispatch(request, *args, **kwargs)
+
+
+
+    def __get_query_columns(self, query):
+        columns_ = []
+        mapper_ = query.column_descriptions[0]['expr']
+        for tbl_ in mapper_.tables:
+            columns_ += list(map(str, tbl_._columns))
+        return columns_
+
+
+    ## If size of answer too big, make it as delayed report:
+    def report_redirect(self, request):
+        ##qs = self.get_queryset_compiled()
+        ##qs_str = qs.statement.compile(compile_kwargs={"literal_binds": True})
+
+        ##try: columns_ = self.__get_query_columns(qs)
+        ##except: columns_ = []
+
+        try:
+            user_ = request.user.login
+            uid_ = request.user.openid
+        except Exception as err:
+            user_ = None
+            uid_ = None
+
+        try: 
+            ident = Reports.create(
+                ##qs=str(qs_str),
+                ##fields=columns_,
+                format=self.output,
+                status=0,
+                type=1, ## 0: as row sql, 1: as extra params;
+                user=user_,
+                as_attach=self.output_as_attach,
+                uid=uid_,
+                tz=self._tz,
+                path=None,
+                extra=self.get_report_params(),
+            )
+        except Exception as err:
+            logging.error('Error on creating report, when str(qs): %s' % err)
+            raise(err)
+
+        backendClient(host=settings.WEBAPIBACKEND_HOST, port=settings.WEBAPIBACKEND_PORT).call_token(ident)
+
+        location = url_for('reports:get', ident=ident)
+        context = self.get_context_data()
+        context.update({
+            'errno': 0,
+            'error': 'report_redirect',
+            'details': 'Go to location for report(%s) download' % ident,
+            'location': location,
+            'ident': ident,
+        })
+
+        errcode = self.dont_redirect and 200 or 302
+        """
+        abort(errcode, location=location, description={
+            'errno': 0,
+            'error': 'report_redirect',
+            'details': 'Go to location for report(%s) download' % ident,
+            'location': location,
+            'ident': ident,
+        })
+        """
+        abort(errcode, location=location, description=context)
+
+
+
+

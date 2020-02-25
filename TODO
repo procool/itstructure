@@ -1,0 +1,15 @@
+1. How passport should works?
+  - it might be some type of connector, or something.
+  there are two steps:
+  1.1 i-face authentication
+    1.1.1 - may be customized JS, that could be overwrited by system administrator?
+    1.1.2 - api direct auth check
+  1.2. api authentication
+    1.2.1 - internal authentication, some customized connector, ldap or something?
+    1.2.2 - external handler for 1.1.2
+2. make Models
+3. make simple draft of the iface
+4. make iface startup
+5. iface+api first crud view
+6. iface+api first list view
+7. ...

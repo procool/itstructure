@@ -1,0 +1,621 @@
+
+
+2019-06-07 21:06:31 apctest 3.14.12 (29 March 2014) debian
+Checking configuration ...
+sharenet.type = Network & ShareUPS Disabled
+cable.type = Custom Cable Smart
+mode.type = APC Smart UPS (any)
+Setting up the port ...
+Doing prep_device() ...
+
+You are using a SMART cable type, so I'm entering SMART test mode
+Hello, this is the apcupsd Cable Test program.
+This part of apctest is for testing Smart UPSes.
+Please select the function you want to perform.
+
+1) Query the UPS for all known values
+2) Perform a Battery Runtime Calibration
+3) Abort Battery Calibration
+4) Monitor Battery Calibration progress
+5) Program EEPROM
+6) Enter TTY mode communicating with UPS
+Q) Quit
+
+Select function number: 2
+
+First ensure that we have a good link and 
+that the UPS is functionning normally.
+Simulating UPSlinkCheck ...
+Bad status from write: Bad file descriptor
+
+
+2019-06-07 21:16:11 apctest 3.14.12 (29 March 2014) debian
+Checking configuration ...
+sharenet.type = Network & ShareUPS Disabled
+cable.type = USB Cable
+mode.type = USB UPS Driver
+Setting up the port ...
+
+
+2019-06-07 21:16:21 apctest 3.14.12 (29 March 2014) debian
+Checking configuration ...
+sharenet.type = Network & ShareUPS Disabled
+cable.type = USB Cable
+mode.type = USB UPS Driver
+Setting up the port ...
+Doing prep_device() ...
+
+You are using a USB cable type, so I'm entering USB test mode
+Hello, this is the apcupsd Cable Test program.
+This part of apctest is for testing USB UPSes.
+
+Getting UPS capabilities...SUCCESS
+
+Please select the function you want to perform.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 4
+
+Current battery date: 11/23/2011
+Enter new battery date (MM/DD/YYYY), blank to quit: 07/06/2019
+
+Writing new date...SUCCESS
+Waiting for change to take effect...SUCCESS
+Current battery date: 07/06/2019
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 8
+
+Current LOW transfer voltage setting: 208 Volts
+Enter new LOW transfer voltage (0 to cancel): 0
+
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 12
+
+Current Self-test interval: 14 days
+Press...
+ 0 for None
+ 1 for On Power
+ 2 for 7 Days
+ 3 for 14 Days
+ Q to Quit with no changes
+Your choice: Select function: q
+
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 2
+
+
+This test instructs the UPS to perform a self-test
+operation and reports the result when the test completes.
+
+Clearing previous self test result...CLEARED
+Initiating self test...INITIATED
+Waiting for test to complete...COMPLETED
+Result of last self test: PASSED
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 3
+
+Result of last self test: PASSED
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 1
+
+
+This test will attempt to power down the UPS.
+The USB cable should be plugged in to the UPS, but the
+AC power plug to the UPS should be DISCONNECTED.
+
+PLEASE DO NOT RUN THIS TEST WITH A COMPUTER CONNECTED TO YOUR UPS!!!
+
+Please enter any character when ready to continue: 
+2019-06-07 21:18:29 calling kill_power function.
+2019-06-07 21:18:32 returned from kill_power function.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 6
+
+Current alarm setting: ENABLED
+Press...
+ E to Enable alarms
+ D to Disable alarms
+ Q to Quit with no changes
+Your choice: Select function: q
+
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 7
+
+Current sensitivity setting: HIGH
+Press...
+ L for Low sensitivity
+ M for Medium sensitivity
+ H for High sensitivity
+ Q to Quit with no changes
+Your choice: Select function: m
+
+New sensitivity setting: MEDIUM
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 10
+
+This test instructs the UPS to perform a battery calibration
+operation and reports the result when the process completes.
+The battery level must be at 100% and the load must be at least
+10% to begin this test.
+
+Battery level is 100% -- OK
+Load level 0% is insufficient to run test.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 11
+
+Testing alarm...COMPLETE
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 1
+
+
+This test will attempt to power down the UPS.
+The USB cable should be plugged in to the UPS, but the
+AC power plug to the UPS should be DISCONNECTED.
+
+PLEASE DO NOT RUN THIS TEST WITH A COMPUTER CONNECTED TO YOUR UPS!!!
+
+Please enter any character when ready to continue: 
+2019-06-07 21:21:21 calling kill_power function.
+2019-06-07 21:21:21 returned from kill_power function.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 1
+
+
+This test will attempt to power down the UPS.
+The USB cable should be plugged in to the UPS, but the
+AC power plug to the UPS should be DISCONNECTED.
+
+PLEASE DO NOT RUN THIS TEST WITH A COMPUTER CONNECTED TO YOUR UPS!!!
+
+Please enter any character when ready to continue: 
+2019-06-07 21:21:29 calling kill_power function.
+2019-06-07 21:21:29 returned from kill_power function.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 1
+
+
+This test will attempt to power down the UPS.
+The USB cable should be plugged in to the UPS, but the
+AC power plug to the UPS should be DISCONNECTED.
+
+PLEASE DO NOT RUN THIS TEST WITH A COMPUTER CONNECTED TO YOUR UPS!!!
+
+Please enter any character when ready to continue: 
+2019-06-07 21:21:32 calling kill_power function.
+2019-06-07 21:21:32 returned from kill_power function.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 1
+
+
+This test will attempt to power down the UPS.
+The USB cable should be plugged in to the UPS, but the
+AC power plug to the UPS should be DISCONNECTED.
+
+PLEASE DO NOT RUN THIS TEST WITH A COMPUTER CONNECTED TO YOUR UPS!!!
+
+Please enter any character when ready to continue: 
+2019-06-07 21:21:42 calling kill_power function.
+2019-06-07 21:21:42 returned from kill_power function.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: [A
+
+Illegal response. Please enter 1-12,Q
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 1
+
+
+This test will attempt to power down the UPS.
+The USB cable should be plugged in to the UPS, but the
+AC power plug to the UPS should be DISCONNECTED.
+
+PLEASE DO NOT RUN THIS TEST WITH A COMPUTER CONNECTED TO YOUR UPS!!!
+
+Please enter any character when ready to continue: 
+2019-06-07 21:21:44 calling kill_power function.
+2019-06-07 21:21:44 returned from kill_power function.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: q
+
+2019-06-07 21:21:44 End apctest.
+
+
+2019-06-07 21:21:46 apctest 3.14.12 (29 March 2014) debian
+Checking configuration ...
+sharenet.type = Network & ShareUPS Disabled
+cable.type = USB Cable
+mode.type = USB UPS Driver
+Setting up the port ...
+Doing prep_device() ...
+
+You are using a USB cable type, so I'm entering USB test mode
+Hello, this is the apcupsd Cable Test program.
+This part of apctest is for testing USB UPSes.
+
+Getting UPS capabilities...SUCCESS
+
+Please select the function you want to perform.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 10
+
+This test instructs the UPS to perform a battery calibration
+operation and reports the result when the process completes.
+The battery level must be at 100% and the load must be at least
+10% to begin this test.
+
+Failed to read current battery level
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: q
+
+2019-06-07 22:40:45 End apctest.
+
+
+2019-06-07 22:40:49 apctest 3.14.12 (29 March 2014) debian
+Checking configuration ...
+sharenet.type = Network & ShareUPS Disabled
+cable.type = USB Cable
+mode.type = USB UPS Driver
+Setting up the port ...
+Doing prep_device() ...
+
+You are using a USB cable type, so I'm entering USB test mode
+Hello, this is the apcupsd Cable Test program.
+This part of apctest is for testing USB UPSes.
+
+Getting UPS capabilities...SUCCESS
+
+Please select the function you want to perform.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 10
+
+This test instructs the UPS to perform a battery calibration
+operation and reports the result when the process completes.
+The battery level must be at 100% and the load must be at least
+10% to begin this test.
+
+Battery level is 100% -- OK
+Load level is 18% -- OK
+Clearing previous self test result...CLEARED
+
+The battery calibration should automatically end
+when the battery level drops below about 25%.
+This process can take minutes or hours, depending on
+the size of your UPS and the load attached.
+
+Initiating battery calibration...INITIATED
+
+Waiting for calibration to complete...
+To abort the calibration, press ENTER.
+
+Battery level: 100%
+Battery level: 83%
+Battery level: 73%
+Battery level: 64%
+Battery level: 59%
+CALIBRATION COMPLETED
+Result of last self test: ABORTED
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 10
+
+This test instructs the UPS to perform a battery calibration
+operation and reports the result when the process completes.
+The battery level must be at 100% and the load must be at least
+10% to begin this test.
+
+Battery level 30% is insufficient to run test.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 2019-06-07 22:45:34 apctest exiting, signal 2
+
+
+2019-06-07 22:45:36 apctest 3.14.12 (29 March 2014) debian
+Checking configuration ...
+sharenet.type = Network & ShareUPS Disabled
+cable.type = USB Cable
+mode.type = USB UPS Driver
+Setting up the port ...

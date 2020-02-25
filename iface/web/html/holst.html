@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+  <head>
+    <title>DraftDesign Holst test Interface</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/core.css">
+    <link rel="stylesheet" href="/css/auth.core.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/snap.svg-min.js"></script>
+    <script src="/js/holst.core.js"></script>
+    <script src="/js/holst_init.js"></script>
+
+    <style>
+#header{
+    clear: both;
+}
+#zoom_wrapper{
+    float: left;
+}
+#zoom_wrapper span {
+    cursor: pointer;
+}
+#holst_menu_wrapper{
+    float: left;
+}
+#holst_menu_items{
+    clear: both;
+}
+#holst_menu_ctegories{
+    clear: both;
+}
+#holst_draw_wrapper{
+    clear: both;
+    overflow: scroll;
+    width: 640px;
+    height: 480px;
+}
+.menu-item {
+    float: left;
+    margin-right: 5px;
+    padding: 2px;
+    cursor: pointer;
+}
+    </style>
+
+  </head>
+
+  <body>
+    <div id="header">
+      <div id="zoom_wrapper">
+        <span id="zoomin">+</span>
+        /
+        <span id="zoomout">-</span>
+      </div>
+      <div id="holst_menu_wrapper">
+        <div id="holst_menu_items">
+          <div class="menu-item">
+<svg style="width: 64px; height: 64px;"><rect x="2" y="2" width="60" height="60" style="stroke-width: 3px;" stroke="#000000" fill="none"/></svg>
+          </div>
+          <div class="menu-item">
+<svg style="width: 64px; height: 64px;"><circle cx="32" cy="32" r="30" style="stroke-width: 3px;" stroke="#000000" fill="none"/></svg>
+          </div>
+          <div class="menu-item">
+<svg style="width: 64px; height: 64px;"><polygon points="2,60 31,2 60,60" fill="violet" stroke="purple" stroke-width="2"/></svg>
+          </div>
+        </div>
+        <div id="holst_menu_ctegories">
+          <span>BASICS</span>
+          <span>TEXT</span>
+          <span>FORMS</span>
+        </div>
+      </div>
+    </div>
+    <div id="holst_draw_wrapper">
+    </div>
+  </body>
+</html>
+
+
+
+
+
+

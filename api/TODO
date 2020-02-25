@@ -1,0 +1,5 @@
+1. Select database for private mode, cassandra might be not good for as, - too big
+2. Setup nginx for embedded(public) mode
+3. Set embedded mode for working with private;
+4. write API manual
+

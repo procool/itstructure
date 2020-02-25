@@ -1,0 +1,45 @@
+.core-menu {
+    width: 80px;
+    min-height: 100px;
+    background-color: #444;
+    border: 1px solid black;
+    //border-radius: 0px 5px 2px 0px;
+    overflow: hidden;
+    float: left;
+}
+
+.core-menu .button {
+  border: 1px solid #333;
+  border-radius: 3px;
+  background-image: url("/img/sprites.png");
+  background-repeat: no-repeat;
+  background-color: #666;
+  height: 32px;
+  width: 32px;
+  margin: 3px;
+  display: inline-block;
+  //margin-right: 0px;
+  cursor: pointer;
+}
+.core-menu .button:hover {
+  background-color: #777;
+}
+
+.core-menu .button.selected {
+  background-color: #f77;
+}
+
+.core-menu .dragged-wrapper {
+    position: absolute;
+}
+
+.core-canvas {
+    background-color: #eee;
+    border: 1px solid #aaa;
+    border-radius: 0px 0px 5px 5px;
+    float: left;
+    overflow: hidden;
+}
+
+
+

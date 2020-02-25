@@ -1,0 +1,126 @@
+##########################################################
+########### Welcome to Passport Project! ###################
+
+!!! WARNING !!!  Project is not ready to run on any instance!
+Please, read TODO file!
+
+
+This project would be tested with OS FreeBSD and Linux(ubuntu)
+
+
+##########################################################
+## Be sure, that you have:
+1. DB: ProsgreSQL(or any other) server
+2. FreeBSD: be sure, that you have gmake installed!!!
+
+
+##########################################################
+## Install Server Applications First:
+
+sudo pkg install nginx redis py27-pip gettext py27-gevent py27-supervisor
+
+or
+
+sudo apt install nginx redis python-psycopg2 alembic
+
+
+
+##########################################################
+## Install Python packages:
+
+sodo pip install supervisor
+sudo pip install tornado                # statusd websockets daemon
+sudo pip install redis 
+sudo pip install sqlalchemy_mptt
+sudo pip install pytz
+
+
+##########################################################
+## CONFIGURATION:
+
+1. Create your config file:
+  cp conf/local.mk{.orig,}
+
+2. Edit it:
+  vi conf/local.mk
+
+  For example, if you are project developer, change next lines:
+--cut:
+OWNER             = your_login
+OWNER_GROUP       = your_group
+ROOT              = /PATH/TO/PROJECTS/draftdesign-passport
+HTTPD_HOST        = dev.your.host
+HTTPD_USER        = www # www-data for ubuntu
+HTTPD_GROUP       = www # -- / --
+ROOTCOOKIE        = .dev.your.host
+<< cut
+
+
+3. Make project configuration:
+
+  FreeBSD:
+      sudo gmake init
+
+  Linux:
+      sudo make init
+
+4. Link created configurations of nginx and supervisor to same directories:
+
+  FreeBSD:
+      sudo gmake configs-freebsd
+        or 
+      sudo gmake configs
+
+  Linux:
+      sudo gmake configs-linux
+
+5. !!! Be sure, that `conf.d' directories of nginx and supervisor servers 
+   are included in general configuration files !!!
+
+6. Start your database, nginx and redis-server
+
+7. Create a database in accordance with the settings 
+   in your configuration file.
+
+   Than go to "globals" directory of project, and run migration process:
+   $ cd globals; 
+   $ alembic upgrade head
+
+
+8. Start supervisor:
+
+  FreeBSD:
+    sudo gmake rebsd
+
+  Linux:
+    sudo gmake relinux
+
+  It will takes 5 seconds;
+  Than, you can restart this server by this commands
+
+
+
+##########################################################
+## RESTARTING SERVICE:
+
+Read the p8 of the previous statement:)
+
+
+
+##########################################################
+## PROJECT UPDATE:
+
+  Use next commands for update:
+
+  FreeBSD:
+    gmake updateall
+
+  Linux:
+    gmake updateall
+
+
+  Comment: git pull & db migrate & supervisor restart
+
+
+
+That's all, folks:)
