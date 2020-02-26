@@ -1,5 +1,6 @@
 body {
     min-width: 900px;
+    height: 100%;
 }
 
 #auth_core_wrapper {

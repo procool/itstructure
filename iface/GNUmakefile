@@ -10,6 +10,7 @@ HTTPD_USER	?= ${OWNER}
 HTTPD_GROUP	?= ${OWNER_GROUP}
 HTTPD_LOGS	?= ${ROOT}/logs
 MAKE		?= make
+IDENT		?= itstructure
 
 help:
 	@echo '\
@@ -29,11 +30,11 @@ configs: configs-linux
 
 configs-freebsd: build_protos
 	@mkdir -p /usr/local/etc/nginx/sites-enabled
-	@ln -s ${CONFIG}/nginx.conf /usr/local/etc/nginx/sites-enabled/draftdesign-iface.conf
+	@ln -s ${CONFIG}/nginx.conf /usr/local/etc/nginx/sites-enabled/${IDENT}-${HTTPD_HOST}-iface.conf
 
 configs-linux: build_protos
 	@mkdir -p /etc/nginx/sites-enabled
-	@ln -s ${CONFIG}/nginx.conf /etc/nginx/sites-enabled/draftdesign-iface.conf
+	@ln -s ${CONFIG}/nginx.conf /etc/nginx/sites-enabled/${IDENT}-${HTTPD_HOST}-iface.conf
 
 
 

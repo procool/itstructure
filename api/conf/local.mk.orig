@@ -5,6 +5,8 @@ OWNER_GROUP       = projects
 ## Project root path:
 ROOT              = /projects/itstructure/api
 
+IDENT		  = itstructure
+
 HTTPD_HOST        = api.somedomain.ru
 HTTPD_USER        = www-data
 HTTPD_GROUP       = www-data

@@ -15,6 +15,7 @@ SCRIPTS_TEST	?= ${SCRIPTS}/tests
 HTTPD_USER	?= ${OWNER}
 HTTPD_GROUP	?= ${OWNER_GROUP}
 HTTPD_LOGS	?= ${ROOT}/logs
+IDENT		?= itstructure
 MAKE		?= make
 
 help:
@@ -39,15 +40,15 @@ configs: configs-linux
 
 configs-freebsd: build_protos
 	@mkdir -p /usr/local/etc/supervisor
-	@ln -s ${CONFIG}/supervisor.conf /usr/local/etc/supervisor/draftdesign-api.conf
+	@ln -s ${CONFIG}/supervisor.conf /usr/local/etc/supervisor/${IDENT}-${HTTPD_HOST}-api.conf
 	@mkdir -p /usr/local/etc/nginx/sites-enabled
-	@ln -s ${CONFIG}/nginx.conf /usr/local/etc/nginx/sites-enabled/draftdesign-api.conf
+	@ln -s ${CONFIG}/nginx.conf /usr/local/etc/nginx/sites-enabled/${IDENT}-${HTTPD_HOST}-api.conf
 
 configs-linux: build_protos
 	@mkdir -p /etc/supervisor/conf.d
-	@ln -s ${CONFIG}/supervisor.conf /etc/supervisor/conf.d/draftdesign-api.conf
+	@ln -s ${CONFIG}/supervisor.conf /etc/supervisor/conf.d/${IDENT}-${HTTPD_HOST}-api.conf
 	@mkdir -p /etc/nginx/sites-enabled
-	@ln -s ${CONFIG}/nginx.conf /etc/nginx/sites-enabled/draftdesign-api.conf
+	@ln -s ${CONFIG}/nginx.conf /etc/nginx/sites-enabled/${IDENT}-${HTTPD_HOST}-api.conf
 
 
 

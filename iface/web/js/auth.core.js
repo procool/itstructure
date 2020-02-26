@@ -1,7 +1,7 @@
 /*! core.js build:1.0.1, development. Copyright(c) 2019 procool@ New BSD Licensed */
 
 /**
- * CORE of authorization process on draftdesign project interface
+ * CORE of authorization process on itstructure project interface
  * Copyright(c) 2019 procool                ~
  *                                            ~
  * License: New BSD License                c(__)

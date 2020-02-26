@@ -48,7 +48,7 @@ sudo pip install pytz
 --cut:
 OWNER             = your_login
 OWNER_GROUP       = your_group
-ROOT              = /PATH/TO/PROJECTS/draftdesign-passport
+ROOT              = /PATH/TO/PROJECTS/itstrcture
 HTTPD_HOST        = dev.your.host
 HTTPD_USER        = www # www-data for ubuntu
 HTTPD_GROUP       = www # -- / --

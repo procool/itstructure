@@ -1,7 +1,7 @@
 /*! holst.core.js build:1.0.1, development. Copyright(c) 2019 procool@ New BSD Licensed */
 
 /**
- * CORE of drawing interface of draftdesign project interface
+ * CORE of drawing interface of istructure project interface
  * Copyright(c) 2019 procool                ~
  *                                            ~
  * License: New BSD License                c(__)
